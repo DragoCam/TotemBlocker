@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ============================================================
+         Basic Project Info
+         ============================================================ -->
+    <groupId>net.nightzy</groupId>
+    <artifactId>TotemBlocker</artifactId>
+    <version>26.1</version>
+    <name>TotemBlocker</name>
+
+    <!-- ============================================================
+         Project Properties
+         ============================================================ -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.build.timestamp.format>yyyy-MM-dd HH.mm</maven.build.timestamp.format>
+        <authors>[Drago &lt;klaudiusz.wojtyczka@nightzy.net&gt;]</authors>
+        <project.url>https://nightzy.net</project.url>
+        <apiVersion>1.19</apiVersion>
+    </properties>
+
+    <!-- ============================================================
+         Build Configuration
+         ============================================================ -->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Shade Plugin for Uber-JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <finalName>${project.name}-${project.version}</finalName>
+                    <minimizeJar>true</minimizeJar>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- ============================================================
+         Repositories
+         ============================================================ -->
+    <repositories>
+        <repository>
+            <id>paper-repo</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>enginehub</id>
+            <url>https://maven.enginehub.org/repo/</url>
+        </repository>
+    </repositories>
+
+    <!-- ============================================================
+         Dependencies
+         ============================================================ -->
+    <dependencies>
+        <!-- Paper API (compile-time only) -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.19.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.13</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+            <version>7.2.13</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

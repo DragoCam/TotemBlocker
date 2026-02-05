@@ -1,0 +1,22 @@
+# ============================================================
+# TotemBlocker plugin configuration
+# ============================================================
+
+name: '${project.name}'
+version: '${project.version}'
+main: net.nightzy.totemblocker.TotemBlockerPlugin
+api-version: '${apiVersion}'
+authors:
+  - Drago <klaudiusz.wojtyczka@nightzy.net>
+website: '${project.url}'
+description: TBA
+dependencies:
+  WorldGuard:
+    version: '7.0.11'
+
+# ============================================================
+# Permissions
+
+# ============================================================
+# Commands
+# ============================================================s
