@@ -13,7 +13,6 @@ public class TotemBlockerPlugin extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        new GithubUpdateChecker(this, "DragoCam/TotemBlocker").check();
         FlagRegistry registry = WorldGuard.getInstance().getFlagRegistry();
 
         try {
@@ -30,6 +29,7 @@ public class TotemBlockerPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        new GithubUpdateChecker(this, "DragoCam/TotemBlocker").check();
         getServer().getPluginManager().registerEvents(
                 new NoTotemHandler(this),
                 this
